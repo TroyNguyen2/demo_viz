@@ -93,6 +93,6 @@ def clean_processing(df_Aeon:str) -> DataFrame:
                                        )                                                                 
     df_Aeon     = df_Aeon.with_columns((pl.col("personal_monthly_income")).fill_null(strategy="zero"),
                                        (pl.sum_horizontal(dim_spend)*700).alias("day_spend")).sort("Branch")
-    print(df_Aeon)
+    
     return df_Aeon.drop(dim_spend).write_parquet("demo\data_clean_demo.parquet")
 clean_processing(df_Aeon)
