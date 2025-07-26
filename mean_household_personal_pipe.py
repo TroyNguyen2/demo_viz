@@ -17,11 +17,11 @@ def personal_income(df_Aeon:DataFrame):
              color='age', barmode='group',histfunc="avg",
             text_auto='.2s',hover_name="age",title="Mean Personal income _ Age",
              height=400)
-    return fig, df_Aeon.group_by(pl.col(["Branch","age"])).agg(pl.avg("personal_monthly_income").alias("mean_personal_monthly_income")).sort(["Branch","age"])
+    return fig, df_Aeon.group_by(pl.col(["Branch","age"])).agg(pl.mean("personal_monthly_income").alias("mean_personal_monthly_income")).sort(["Branch","age"])
 
 def household_income(df_Aeon:DataFrame):
     fig = px.histogram(df_Aeon, x="Branch", y="household_monthly_income",
             color='age', barmode='group',histfunc="avg",
             text_auto='.2s',hover_name="age",title="Mean Household income _ Age",
             height=400)
-    return fig, df_Aeon.group_by(pl.col(["Branch","age"])).agg(pl.avg("household_monthly_income").alias("mean_household_monthly_income")).sort(["Branch","age"])
+    return fig, df_Aeon.group_by(pl.col(["Branch","age"])).agg(pl.mean("household_monthly_income").alias("mean_household_monthly_income")).sort(["Branch","age"])
